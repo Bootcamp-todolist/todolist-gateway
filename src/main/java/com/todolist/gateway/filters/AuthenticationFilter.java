@@ -1,5 +1,10 @@
 package com.todolist.gateway.filters;
 
+import static com.todolist.gateway.common.Constant.USER_ID;
+import static com.todolist.gateway.common.Constant.USER_ROLE;
+import static com.todolist.gateway.common.Role.ADMIN;
+import static com.todolist.gateway.common.Role.USER;
+
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.todolist.gateway.service.JwtUtil;
@@ -43,6 +48,11 @@ public class AuthenticationFilter implements GlobalFilter, Ordered {
 
       String userId = jwtUtil.userId(decodedJWT);
       String userRole = jwtUtil.userRole(decodedJWT);
+      //FIXME
+      if (!(userRole.equals(ADMIN.toString()) && requestPath.startsWith("/api/admin/")) || (
+          !userRole.equals(USER.toString()) && requestPath.startsWith("/api/member/"))) {
+        return this.onError(exchange, "Access denied");
+      }
       this.populateRequestWithHeaders(exchange, userId, userRole);
     }
     addResponseHeader(exchange.getResponse());
@@ -89,8 +99,8 @@ public class AuthenticationFilter implements GlobalFilter, Ordered {
   private void populateRequestWithHeaders(
       ServerWebExchange exchange, String userId, String userRole) {
     exchange.getRequest().mutate()
-        .header("user_id", userId)
-        .header("user_role", userRole)
+        .header(USER_ID, userId)
+        .header(USER_ROLE, userRole)
         .build();
   }
 
