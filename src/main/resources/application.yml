@@ -1,5 +1,5 @@
-account-service-uri: http://localhost:9090
 admin-bff-uri: http://localhost:9091
+member-bff-uri: http://localhost:9092
 
 spring:
   application:
@@ -14,10 +14,12 @@ spring:
           order: 1
           filters:
             - RewritePath=/api, /
+
         - id:
-          uri: ${account-service-uri}
+          uri: ${member-bff-uri}
           predicates:
             - Path= /api/member/**
           order: 1
           filters:
             - RewritePath=/api, /
+
