@@ -8,18 +8,20 @@ spring:
     gateway:
       routes:
         - id:
-          uri: ${admin-bff-uri}
-          predicates:
-            - Path= /api/admin/**
-          order: 1
-          filters:
-            - RewritePath=/api, /
-
-        - id:
           uri: ${member-bff-uri}
           predicates:
             - Path= /api/member/**,/api/task/**
           order: 1
           filters:
             - RewritePath=/api, /
+
+        - id:
+          uri: ${admin-bff-uri}
+          predicates:
+            - Path= /api/admin/**
+          order: 2
+          filters:
+            - RewritePath=/api, /
+
+
 
