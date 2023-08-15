@@ -18,7 +18,7 @@ spring:
         - id:
           uri: ${member-bff-uri}
           predicates:
-            - Path= /api/member/**
+            - Path= /api/member/**,/api/task/**
           order: 1
           filters:
             - RewritePath=/api, /
