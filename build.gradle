@@ -5,7 +5,11 @@ plugins {
 }
 
 group = 'com.todolist.gateway'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
+
+jar {
+    archiveFileName = 'todolist-gateway.jar'
+}
 
 java {
     sourceCompatibility = '17'
