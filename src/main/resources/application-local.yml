@@ -1,5 +1,5 @@
-admin-bff-uri: http://localhost:8080
-member-bff-uri: http://localhost8080
+admin-bff-uri: http://localhost:9091
+member-bff-uri: http://localhost:9092
 
 spring:
   application:
