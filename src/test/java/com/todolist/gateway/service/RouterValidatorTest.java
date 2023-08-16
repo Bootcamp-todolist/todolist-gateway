@@ -21,6 +21,8 @@ class RouterValidatorTest {
 
   @ParameterizedTest
   @ValueSource(strings = {
+      "/api/admin/login",
+
       "/api/admin/register",
       "/api/admin/member",
       "/api/admin/members",
