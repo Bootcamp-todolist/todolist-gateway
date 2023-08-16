@@ -8,7 +8,7 @@ group = 'com.todolist.gateway'
 version = '0.0.1'
 
 jar {
-    archiveFileName = 'todolist-gateway.jar'
+    archiveFileName = 'todolist-gateway-0.0.1.jar'
 }
 
 java {

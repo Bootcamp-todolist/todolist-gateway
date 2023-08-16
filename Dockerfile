@@ -2,7 +2,7 @@ FROM openjdk:22-jdk-slim
 
 WORKDIR /app
 
-COPY build/libs/todolist-gateway.jar app.jar
+COPY build/libs/todolist-gateway-0.0.1.jar app.jar
 
 EXPOSE 8080
 
