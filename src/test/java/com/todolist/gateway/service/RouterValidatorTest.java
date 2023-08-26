@@ -12,8 +12,8 @@ class RouterValidatorTest {
 
   @ParameterizedTest
   @ValueSource(strings = {
-      "/api/admin/login",
-      "/api/member/login"
+      "/admin/login",
+      "/member/login"
   })
   void should_bypass_authentication_on_these_urls(String url) {
     assertFalse(routerValidator.needAuth(url));
