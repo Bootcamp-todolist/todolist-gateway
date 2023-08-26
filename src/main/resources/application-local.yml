@@ -13,7 +13,7 @@ spring:
             - Path= /api/member/**,/api/task/**
           order: 1
           filters:
-            - RewritePath=/api, /
+            - StripPrefix=1
 
         - id:
           uri: ${admin-bff-uri}
@@ -21,7 +21,7 @@ spring:
             - Path= /api/admin/**
           order: 2
           filters:
-            - RewritePath=/api, /
+            - StripPrefix=1
 
 
 
